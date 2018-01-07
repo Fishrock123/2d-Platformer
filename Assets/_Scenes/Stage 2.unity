@@ -2041,6 +2041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1614671075}
+  nextLevel: Stage 1
 --- !u!58 &1017535773
 CircleCollider2D:
   m_ObjectHideFlags: 0

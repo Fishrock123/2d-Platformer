@@ -25,18 +25,20 @@ public class GameController : MonoBehaviour {
 	public void AddScore (int add) {
 		score += add;
 		won = false;
+		textComponent.text = prefix + score;
 	}
 
-	public void Win () {
+	public void Win (string nextLevel) {
 		won = true;
 		bool reallyWon = score >= winScore;
-		string text = reallyWon ? winText : winMaybeText;
-		textComponent.text = text + score * 50;
+		if (reallyWon) {
+			SceneManager.LoadScene(nextLevel);
+		}
+		textComponent.text = winMaybeText + score * 50;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!won) textComponent.text = prefix + score;
 	}
 
 	public void TogglePauseMenu() {
