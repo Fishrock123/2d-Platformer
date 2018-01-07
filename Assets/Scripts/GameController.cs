@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
+
+	public Canvas menuCanvas;
 
 	public Text textComponent;
 	public string prefix = "Yellow Thingys: ";
@@ -34,5 +37,25 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!won) textComponent.text = prefix + score;
+	}
+
+	public void TogglePauseMenu() {
+		if (menuCanvas.enabled) {
+			menuCanvas.enabled = false;
+			Time.timeScale = 1.0f;
+		} else {
+			menuCanvas.enabled = true;
+			Time.timeScale = 0f;
+		}
+	}
+
+	public void Quit () {
+		Application.Quit();
+	}
+
+	public void LoadLevel (string level) {
+		SceneManager.LoadScene(level);
+		menuCanvas.enabled = false;
+		Time.timeScale = 1.0f;
 	}
 }
