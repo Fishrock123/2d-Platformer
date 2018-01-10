@@ -1185,8 +1185,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 301066336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.32, y: -3.25, z: 0}
-  m_LocalScale: {x: 15.258954, y: 1, z: 1}
+  m_LocalPosition: {x: -4.32, y: -7.36, z: 0}
+  m_LocalScale: {x: 10.299784, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1878334804}
   m_RootOrder: 3
@@ -1708,7 +1708,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4866974595304350, guid: ab0e5c370b8f5d645b5deda0837a581a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.67
+      value: -5.68
       objectReference: {fileID: 0}
     - target: {fileID: 4866974595304350, guid: ab0e5c370b8f5d645b5deda0837a581a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2655,7 +2655,6 @@ MonoBehaviour:
   speed: 10
   maxSpeed: 20
   slideMultiplier: 2
-  sliding: 0
   groundDetector: {fileID: 1958741742}
   rightGrabDetector: {fileID: 525861407}
   leftGrabDetector: {fileID: 533718341}
@@ -2802,8 +2801,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525823658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.9, y: 3.06, z: 0}
-  m_LocalScale: {x: 1, y: 20.590557, z: 1}
+  m_LocalPosition: {x: -15.9, y: 1.36, z: 0}
+  m_LocalScale: {x: 1, y: 24.451286, z: 1}
   m_Children: []
   m_Father: {fileID: 1878334804}
   m_RootOrder: 10

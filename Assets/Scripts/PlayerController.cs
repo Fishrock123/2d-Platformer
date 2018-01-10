@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 5f;
 	public float maxSpeed = 20f;
 	public float slideMultiplier = 2f;
-	public bool sliding = false;
+	// public bool sliding = false;
 	public Transform groundDetector;
 	public Transform rightGrabDetector;
 	public Transform leftGrabDetector;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 		float hx = Input.GetAxisRaw("Horizontal");
 
 		float multiplier = 1f;
-		if (sliding) multiplier *= slideMultiplier;
+		// if (sliding) multiplier *= slideMultiplier;
 
 		bool wasGrab = false;
 		if (rightGrab && !grounded) {
@@ -80,8 +80,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		sliding = grounded && Input.GetButton("Slide");
-		anim.SetFloat(animSlideHash, sliding ? 1f : -1f);
+		// sliding = grounded && Input.GetButton("Slide");
+		// anim.SetFloat(animSlideHash, sliding ? 1f : -1f);
 
 		// Limit velocity
 		// Thanks https://answers.unity.com/questions/683158/how-to-limit-speed-of-a-rigidbody.html
