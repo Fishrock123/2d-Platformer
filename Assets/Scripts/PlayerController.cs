@@ -17,19 +17,26 @@ public class PlayerController : MonoBehaviour {
 	public PhysicsMaterial2D grabPhysics;
 
 	public int grabJumpCount = 0;
+	public bool hasMoved;
 
 	private Rigidbody2D body;
 	private Collider2D coll;
 	private int animSlideHash = Animator.StringToHash("Sliding");
+	private float originalGravityScale;
 
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D>();
 		coll = GetComponent<Collider2D>();
+
+		originalGravityScale = body.gravityScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetAxisRaw("Horizontal") != 0f || Input.GetButton("Jump") == true) {
+			hasMoved = true;
+		}
 	}
 
 	void FixedUpdate () {
@@ -62,8 +69,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if (wasGrab) {
+			body.gravityScale = 0f;
 			coll.sharedMaterial = grabPhysics;
 		} else {
+			body.gravityScale = originalGravityScale;
 			coll.sharedMaterial = normalPhysics;
 		}
 
