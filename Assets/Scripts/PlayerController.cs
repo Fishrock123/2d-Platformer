@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour {
 	public PhysicsMaterial2D grabPhysics;
 	public PhysicsMaterial2D movementPhysics;
 
-	public int grabJumpCount = 0;
 	public bool hasMoved;
+	public int collidersTouching = 0;
 
 	private Rigidbody2D body;
 	private Collider2D coll;
@@ -108,10 +108,11 @@ public class PlayerController : MonoBehaviour {
 			if (grounded) {
 				body.AddForce(new Vector2(0f, 450f));
 			}
-			else if (rightGrab && hx < 0 ||
-					 leftGrab && hx > 0) {
-				body.AddForce(new Vector2(0f, 450f));
-				grabJumpCount += 1;
+			else if ((rightGrab && hx < 0 || leftGrab && hx > 0) &&
+					 collidersTouching > 0) {
+				body.AddForce(new Vector2(0f, 800f));
+				
+				collidersTouching = 0;
 			}
 		}
 
@@ -125,5 +126,17 @@ public class PlayerController : MonoBehaviour {
         }
 
 		velocityMagnitude = body.velocity.magnitude;
+	}
+
+	void OnCollisionEnter2D (Collision2D _) {
+		collidersTouching += 1;
+	}
+
+	void OnCollisionExit2D (Collision2D _) {
+		collidersTouching -= 1;
+
+		if (collidersTouching < 0) {
+			collidersTouching = 0;
+		}
 	}
 }
