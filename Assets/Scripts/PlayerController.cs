@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
 
 	public float velocityMagnitude = 0f;
 	public bool isMovementMaterial = false;
+	public bool grounded;
+	public bool leftGrab;
+	public bool rightGrab;
 
 	public float speed = 5f;
 	public float jumpMultiplier = 1.5f;
@@ -46,9 +49,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		bool rightGrab = Physics2D.Linecast(transform.position, rightGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
-		bool leftGrab = Physics2D.Linecast(transform.position, leftGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
-		bool grounded = Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Ground"));
+		rightGrab = Physics2D.Linecast(transform.position, rightGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
+		leftGrab = Physics2D.Linecast(transform.position, leftGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
+		grounded = Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Ground"));
 		
 		float hx = Input.GetAxisRaw("Horizontal");
 
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour {
 		// if (sliding) multiplier *= slideMultiplier;
 
 		bool wasGrab = false;
+
 		if (rightGrab && !grounded) {
 			if (hx > 0) {
 				multiplier = 1000f;
@@ -82,12 +86,17 @@ public class PlayerController : MonoBehaviour {
 			coll.sharedMaterial = grabPhysics;
 		} else {
 			body.gravityScale = originalGravityScale;
-			if (hx > 0 && body.velocity.x > 0 || hx < 0 && body.velocity.x < 0) {
+			if (grounded && hx > 0 && body.velocity.x > 0 || hx < 0 && body.velocity.x < 0) {
 				isMovementMaterial = true;
 				coll.sharedMaterial = movementPhysics;
 			} else {
 				coll.sharedMaterial = normalPhysics;
 			}
+		}
+
+		// TODO: teleport the player if they get stuck?
+		if (rightGrab && leftGrab) {
+			coll.sharedMaterial = movementPhysics;
 		}
 
 		if (body.velocity.magnitude < groundedMaxSpeed ||
