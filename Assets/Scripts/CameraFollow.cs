@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
 	}
 
 
-	void FixedUpdate () {
+	void LateUpdate () {
 		transform.position = new Vector3(target.position.x, target.position.y, transform.position.z) + cameraOffset;
 		// TrackPlayer();
 	}
