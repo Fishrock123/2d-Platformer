@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	public float velocityMagnitude = 0f;
+	public bool isMovementMaterial = false;
+
 	public float speed = 5f;
+	public float jumpMultiplier = 1.5f;
 	public float maxSpeed = 20f;
-	public float slideMultiplier = 2f;
+	public float groundedMaxSpeed = 20f;
+	// public float slideMultiplier = 2f;
 	// public bool sliding = false;
 	public Transform groundDetector;
 	public Transform rightGrabDetector;
@@ -15,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 
 	public PhysicsMaterial2D normalPhysics;
 	public PhysicsMaterial2D grabPhysics;
+	public PhysicsMaterial2D movementPhysics;
 
 	public int grabJumpCount = 0;
 	public bool hasMoved;
@@ -47,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 		float hx = Input.GetAxisRaw("Horizontal");
 
 		float multiplier = 1f;
+		if (Input.GetButton("Jump") && grounded) multiplier *= jumpMultiplier;
 		// if (sliding) multiplier *= slideMultiplier;
 
 		bool wasGrab = false;
@@ -68,15 +75,25 @@ public class PlayerController : MonoBehaviour {
 				multiplier *= 2f;
 			}
 		}
+
+		isMovementMaterial = false;
 		if (wasGrab) {
 			body.gravityScale = 0f;
 			coll.sharedMaterial = grabPhysics;
 		} else {
 			body.gravityScale = originalGravityScale;
-			coll.sharedMaterial = normalPhysics;
+			if (hx > 0 && body.velocity.x > 0 || hx < 0 && body.velocity.x < 0) {
+				isMovementMaterial = true;
+				coll.sharedMaterial = movementPhysics;
+			} else {
+				coll.sharedMaterial = normalPhysics;
+			}
 		}
 
-		body.AddForce(new Vector2(hx * speed * slideMultiplier, 0f));
+		if (body.velocity.magnitude < groundedMaxSpeed ||
+		    	(Input.GetButton("Jump") && grounded)) {
+		 	body.AddForce(new Vector2(hx * speed * multiplier, 0f));
+		}
 
 		if (Input.GetButton("Jump")) {
 			if (grounded) {
@@ -94,8 +111,10 @@ public class PlayerController : MonoBehaviour {
 
 		// Limit velocity
 		// Thanks https://answers.unity.com/questions/683158/how-to-limit-speed-of-a-rigidbody.html
-         if (body.velocity.magnitude >= maxSpeed) {
-             body.velocity = Vector3.ClampMagnitude(body.velocity, maxSpeed);
-         }
+     	if (body.velocity.magnitude >= maxSpeed) {
+            body.velocity = Vector3.ClampMagnitude(body.velocity, maxSpeed);
+        }
+
+		velocityMagnitude = body.velocity.magnitude;
 	}
 }

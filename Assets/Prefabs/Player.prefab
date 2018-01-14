@@ -218,14 +218,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f086216f4b8bb454083af0b4c75d882a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  maxSpeed: 20
-  slideMultiplier: 2
+  velocityMagnitude: 0
+  speed: 20
+  jumpMultiplier: 2
+  maxSpeed: 40
+  groundedMaxSpeed: 20
   groundDetector: {fileID: 4218810485307770}
   rightGrabDetector: {fileID: 4244744181134612}
   leftGrabDetector: {fileID: 4980547230386338}
   anim: {fileID: 0}
   normalPhysics: {fileID: 6200000, guid: d492af556b8f55942bb7fa03ea9a5d68, type: 2}
   grabPhysics: {fileID: 6200000, guid: 7e4054ee57386b143b1659b4b75a4355, type: 2}
+  movementPhysics: {fileID: 6200000, guid: 9ac9d6cdfba98554f98d24a13d60fd10, type: 2}
   grabJumpCount: 0
   hasMoved: 0
