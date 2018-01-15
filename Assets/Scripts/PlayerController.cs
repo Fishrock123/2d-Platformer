@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
 	public Transform groundDetector;
 	public Transform rightGrabDetector;
 	public Transform leftGrabDetector;
-	public Animator anim;
 
 	public PhysicsMaterial2D normalPhysics;
 	public PhysicsMaterial2D grabPhysics;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D body;
 	private Collider2D coll;
-	private int animSlideHash = Animator.StringToHash("Sliding");
 	private float originalGravityScale;
 
 	// Use this for initialization
