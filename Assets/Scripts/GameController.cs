@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	public Canvas menuCanvas;
+	public GameObject winCanvas;
 
 	public Text scoreText;
 	public string prefix = "Yellow Thingys: ";
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Time.timeScale = 1.0f;
 	}
 
 	public void AddScore (int add) {
@@ -35,7 +36,9 @@ public class GameController : MonoBehaviour {
 		won = true;
 		bool reallyWon = score >= winScore;
 		if (reallyWon) {
-			SceneManager.LoadScene(nextLevel);
+			Time.timeScale = 0f;
+			winCanvas.SetActive(true);
+			winCanvas.GetComponent<StageEndMenu>().SetNextLevel(nextLevel);
 		}
 		scoreText.text = winMaybeText + score * 50;
 	}
@@ -55,7 +58,7 @@ public class GameController : MonoBehaviour {
 	public void TogglePauseMenu() {
 		if (menuCanvas.enabled) {
 			menuCanvas.enabled = false;
-			Time.timeScale = 1.0f;
+			if (!won) Time.timeScale = 1.0f;
 		} else {
 			menuCanvas.enabled = true;
 			Time.timeScale = 0f;
