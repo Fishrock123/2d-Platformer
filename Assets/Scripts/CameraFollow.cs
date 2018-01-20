@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 	public string targetTag = "Player";
 
 	private Transform target;
-	private Vector3 velocity = Vector3.zero;
+	// private Vector3 velocity = Vector3.zero;
 
 	void Awake () {
 		// Setting up the reference.
