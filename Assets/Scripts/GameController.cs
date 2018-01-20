@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1.0f;
+		Cursor.visible = false;
 	}
 
 	public void AddScore (int add) {
@@ -37,6 +38,7 @@ public class GameController : MonoBehaviour {
 		bool reallyWon = score >= winScore;
 		if (reallyWon) {
 			Time.timeScale = 0f;
+			Cursor.visible = true;
 			winCanvas.SetActive(true);
 			winCanvas.GetComponent<StageEndMenu>().SetNextLevel(nextLevel);
 		}
@@ -59,9 +61,11 @@ public class GameController : MonoBehaviour {
 		if (menuCanvas.activeSelf) {
 			menuCanvas.SetActive(false);
 			if (!won) Time.timeScale = 1.0f;
+			Cursor.visible = false;
 		} else {
 			menuCanvas.SetActive(true);
 			Time.timeScale = 0f;
+			Cursor.visible = true;
 		}
 	}
 
