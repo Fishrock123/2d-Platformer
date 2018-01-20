@@ -4867,6 +4867,20 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1614671075}
+    - target: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808491828922284, guid: f4f7e2cc97694ce4eb9fc7e364ea8348, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
+        type: 2}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4f7e2cc97694ce4eb9fc7e364ea8348, type: 2}
   m_IsPrefabParent: 0
@@ -5403,11 +5417,6 @@ Transform:
   m_Father: {fileID: 1878334804}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &1044998866 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
-    type: 2}
-  m_PrefabInternal: {fileID: 995056209}
 --- !u!1 &1138197525
 GameObject:
   m_ObjectHideFlags: 0
@@ -8110,7 +8119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a12393534632f449192c1b8b8dc212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuCanvas: {fileID: 1044998866}
+  menuCanvas: {fileID: 1682453459}
   winCanvas: {fileID: 722518804}
   scoreText: {fileID: 1262500301}
   prefix: 'Yellow Thingys: '
@@ -8742,6 +8751,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1679997106}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1682453459 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1808491828922284, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
+    type: 2}
+  m_PrefabInternal: {fileID: 995056209}
 --- !u!1 &1700013703
 GameObject:
   m_ObjectHideFlags: 0
@@ -10450,6 +10464,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114304099359224094, guid: 4a9c45a31850f714e89136b1e099df46,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a9c45a31850f714e89136b1e099df46, type: 2}
   m_IsPrefabParent: 0
@@ -10888,6 +10907,11 @@ Prefab:
     - target: {fileID: 224521025768643352, guid: b85414351c008814396d6d80121d06f6,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223109145759166842, guid: b85414351c008814396d6d80121d06f6,
+        type: 2}
+      propertyPath: m_PixelPerfect
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

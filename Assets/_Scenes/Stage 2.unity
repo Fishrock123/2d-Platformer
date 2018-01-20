@@ -1582,7 +1582,7 @@ Prefab:
     - target: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1112174190762032, guid: f4f7e2cc97694ce4eb9fc7e364ea8348, type: 2}
       propertyPath: m_IsActive
@@ -1591,6 +1591,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4f7e2cc97694ce4eb9fc7e364ea8348, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &995056210 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1808491828922284, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
+    type: 2}
+  m_PrefabInternal: {fileID: 995056209}
 --- !u!1 &1017535771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,11 +1697,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &1044998866 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
-    type: 2}
-  m_PrefabInternal: {fileID: 995056209}
 --- !u!1001 &1212709576
 Prefab:
   m_ObjectHideFlags: 0
@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a12393534632f449192c1b8b8dc212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuCanvas: {fileID: 1044998866}
+  menuCanvas: {fileID: 995056210}
   winCanvas: {fileID: 410676704}
   scoreText: {fileID: 1262500301}
   prefix: 'Yellow Thingys: '

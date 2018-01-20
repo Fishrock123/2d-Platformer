@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public Canvas menuCanvas;
+	public GameObject menuCanvas;
 	public GameObject winCanvas;
 
 	public Text scoreText;
@@ -56,11 +56,11 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void TogglePauseMenu() {
-		if (menuCanvas.enabled) {
-			menuCanvas.enabled = false;
+		if (menuCanvas.activeSelf) {
+			menuCanvas.SetActive(false);
 			if (!won) Time.timeScale = 1.0f;
 		} else {
-			menuCanvas.enabled = true;
+			menuCanvas.SetActive(true);
 			Time.timeScale = 0f;
 		}
 	}
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour {
 
 	public void LoadLevel (string level) {
 		SceneManager.LoadScene(level);
-		menuCanvas.enabled = false;
+		menuCanvas.SetActive(false);
 		Time.timeScale = 1.0f;
 	}
 }

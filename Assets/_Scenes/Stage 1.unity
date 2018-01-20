@@ -1147,9 +1147,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4f7e2cc97694ce4eb9fc7e364ea8348, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &792717324 stripped
-Canvas:
-  m_PrefabParentObject: {fileID: 223379097215206798, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
+--- !u!1 &792717324 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1808491828922284, guid: f4f7e2cc97694ce4eb9fc7e364ea8348,
     type: 2}
   m_PrefabInternal: {fileID: 792717323}
 --- !u!1 &793471219
