@@ -14,14 +14,30 @@ public class MenuControllerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (buttons.Count > 0) {
-			buttons[selected].Select();
-		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnEnable () {
+		selected = 0;
+		incrementTimer = 0;
+
+		StartCoroutine(SelectButtonAsync());
+	}
+ 
+	IEnumerator SelectButtonAsync () {
+		// XXX: Awful hack to make the button re-select.
+		// TODO: Should probably just spawn in a new pause menu each time.
+		// See https://answers.unity.com/questions/1142958/buttonselect-doesnt-highlight.html
+		yield return null;
+    	if (buttons.Count > 0) {
+			buttons[selected + 1].Select();
+			buttons[selected].Select();
+		}
 	}
 
 	void FixedUpdate () {
