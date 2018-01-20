@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 			coll.sharedMaterial = grabPhysics;
 		} else {
 			body.gravityScale = originalGravityScale;
-			if (grounded && hx > 0 && body.velocity.x > 0 || hx < 0 && body.velocity.x < 0) {
+			if (hx > 0 && body.velocity.x > 0 || hx < 0 && body.velocity.x < 0) {
 				isMovementMaterial = true;
 				coll.sharedMaterial = movementPhysics;
 			} else {
