@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	public float groundedMaxSpeed = 20f;
 	// public float slideMultiplier = 2f;
 	// public bool sliding = false;
-	public Transform groundDetector;
+	public Collider2D groundDetector;
 	public Transform rightGrabDetector;
 	public Transform leftGrabDetector;
 
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D body;
 	private Collider2D coll;
 	private float originalGravityScale;
+	private RaycastHit2D[] groundDetectorCast = new RaycastHit2D[1];
+	private ContactFilter2D groundContactFilter;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 		coll = GetComponent<Collider2D>();
 
 		originalGravityScale = body.gravityScale;
+
+		groundContactFilter.layerMask = 1 << LayerMask.NameToLayer("Ground");
 	}
 	
 	// Update is called once per frame
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 		rightGrab = Physics2D.Linecast(transform.position, rightGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
 		leftGrab = Physics2D.Linecast(transform.position, leftGrabDetector.position, 1 << LayerMask.NameToLayer("Ground"));
-		grounded = Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Ground"));
+		grounded = groundDetector.Cast(Vector3.zero, groundContactFilter, groundDetectorCast) > 0;
 		
 		float hx = Input.GetAxisRaw("Horizontal");
 
