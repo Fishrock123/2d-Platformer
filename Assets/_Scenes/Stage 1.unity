@@ -2141,9 +2141,6 @@ MonoBehaviour:
   menuCanvas: {fileID: 792717324}
   winCanvas: {fileID: 840853020}
   scoreText: {fileID: 1323077178}
-  prefix: 'Yellow Thingys: '
-  winText: 'You Win!!!! Score!!: '
-  winMaybeText: 'You Win??? Score??: '
   winScore: 5
   score: 0
   player: {fileID: 1364237395}
