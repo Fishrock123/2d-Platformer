@@ -10,9 +10,6 @@ public class GameController : MonoBehaviour {
 	public GameObject winCanvas;
 
 	public Text scoreText;
-	public string prefix = "Yellow Thingys: ";
-	public string winText = "You Win!!!! Score!!: ";
-	public string winMaybeText = "You Win??? Score??: ";
 	public int winScore = 4;
 	public int score = 0;
 	public PlayerController player;
@@ -29,12 +26,13 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		Time.timeScale = 1.0f;
 		Cursor.visible = false;
+		scoreText.text = score + " / " + winScore;
 	}
 
 	public void AddScore (int add) {
 		score += add;
 		won = false;
-		scoreText.text = prefix + score;
+		scoreText.text = score + " / " + winScore;
 	}
 
 	public void Win (string nextLevel) {
@@ -46,7 +44,7 @@ public class GameController : MonoBehaviour {
 			winCanvas.SetActive(true);
 			winCanvas.GetComponent<StageEndMenu>().SetNextLevel(nextLevel);
 		}
-		scoreText.text = winMaybeText + score * 50;
+		scoreText.text = score + " / " + winScore;
 	}
 	
 	// Update is called once per frame
